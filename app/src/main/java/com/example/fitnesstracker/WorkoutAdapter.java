@@ -26,8 +26,15 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
 
     @Override
     public void onBindViewHolder(@NonNull WorkoutViewHolder holder, int position) {
-        holder.binding.recyclerViewTextView.setText(workoutArrayList.get(position).getBodyPart());
+        Workout currentWorkout = workoutArrayList.get(position);
+        holder.binding.recyclerViewBodyPart.setText(currentWorkout.getBodyPart());
+        holder.binding.recyclerViewWorkout.setText(currentWorkout.getWorkout());
+        holder.binding.recyclerViewSet.setText(String.valueOf(currentWorkout.getSets()));
+        holder.binding.recyclerViewRep.setText(String.valueOf(currentWorkout.getReps()));
+        holder.binding.recyclerViewWeight.setText(String.valueOf(currentWorkout.getWeight()));
+        holder.binding.recyclerViewPoints.setText(String.valueOf(currentWorkout.getPoints()));
     }
+
 
     @Override
     public int getItemCount() {
