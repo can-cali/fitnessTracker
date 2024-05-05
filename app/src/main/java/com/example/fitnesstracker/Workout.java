@@ -19,6 +19,19 @@ public class Workout {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "Workout{" +
+                "id=" + id +
+                ", bodyPart='" + bodyPart + '\'' +
+                ", workoutName='" + workout + '\'' +
+                ", sets=" + sets +
+                ", reps=" + reps +
+                ", weight=" + weight +
+                ", date='" + date + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }

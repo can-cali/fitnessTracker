@@ -43,20 +43,20 @@
 
     <EditText
         android:id="@+id/inputWeight"
-        android:layout_height="81dp"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Weight:"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerWorkouts"
-        android:layout_width="wrap_content" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerWorkouts" />
 
     <EditText
         android:id="@+id/inputRep"
-        android:layout_width="239dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="Rep:"
         android:inputType="numberDecimal"
@@ -68,16 +68,17 @@
 
     <EditText
         android:id="@+id/inputSet"
-        android:layout_width="259dp"
-        android:layout_height="69dp"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="Set:"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/buttonSave"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputRep"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.147" />
 
     <TextView
         android:id="@+id/textInfo"
@@ -92,16 +93,19 @@
     <EditText
         android:id="@+id/inputDate"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="99dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="102dp"
         android:layout_marginBottom="18dp"
         android:ems="10"
+        android:hint="Date:"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/buttonSave"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputSet" />
+        app:layout_constraintTop_toBottomOf="@+id/inputSet"
+        app:layout_constraintVertical_bias="0.134" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

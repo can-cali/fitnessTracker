@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class WorkoutSaveActivity extends AppCompatActivity {
     SQLiteDatabase workout;
@@ -92,16 +93,30 @@ public class WorkoutSaveActivity extends AppCompatActivity {
             saveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String sqlString = "INSERT INTO workout (bodyPart, workout, sets, reps, weight, date) VALUES ('?', ?, ?, ?, ?, ?);";
+                    String sqlString = "INSERT INTO workout (bodyPart, workout, sets, reps, weight, date) VALUES (?, ?, ?, ?, ?, ?);";
                     SQLiteStatement sqLiteStatement = workout.compileStatement(sqlString);
-                    sqLiteStatement.bindString(1, spinnerBodyParts.getSelectedItem().toString());
-                    sqLiteStatement.bindString(2, spinnerWorkouts.getSelectedItem().toString());
-                    sqLiteStatement.bindLong(3, Long.parseLong(set.getText().toString()));
-                    sqLiteStatement.bindLong(4, Long.parseLong(rep.getText().toString()));
-                    sqLiteStatement.bindDouble(5, Double.parseDouble(weight.getText().toString()));
-                    sqLiteStatement.bindLong(6, Long.parseLong(date.getText().toString()));
+                    try {
+                        String bodyPart = spinnerBodyParts.getSelectedItem().toString();
+                        String workoutName = spinnerWorkouts.getSelectedItem().toString();
+                        int sets = Integer.parseInt(set.getText().toString());
+                        int reps = Integer.parseInt(rep.getText().toString());
+                        double weightValue = Double.parseDouble(weight.getText().toString());
+                        String dateValue = date.getText().toString();
 
-                    sqLiteStatement.execute();
+
+                        sqLiteStatement.bindString(1, bodyPart);
+                        sqLiteStatement.bindString(2, workoutName);
+                        sqLiteStatement.bindLong(3, sets);
+                        sqLiteStatement.bindLong(4, reps);
+                        sqLiteStatement.bindDouble(5, weightValue);
+                        sqLiteStatement.bindString(6, dateValue);
+
+                        sqLiteStatement.execute();
+
+                    } catch(NumberFormatException e){
+                        Toast.makeText(getApplicationContext(), "Please enter a valid number", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             });
 
