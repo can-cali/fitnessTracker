@@ -9,6 +9,8 @@ public class Workout {
     double weight;
     String date;
 
+    double points;
+
     public Workout(int id, String bodyPart, String workout, int sets, int reps, double weight, String date) {
         this.id = id;
         this.bodyPart = bodyPart;
@@ -30,6 +32,11 @@ public class Workout {
                 ", weight=" + weight +
                 ", date='" + date + '\'' +
                 '}';
+    }
+
+    public double getPoints() {
+        points = reps * (1+(0.333 * reps)) * sets; // formula to calculate workout points
+        return points;
     }
 
     public int getId() {
@@ -60,3 +67,4 @@ public class Workout {
         return date;
     }
 }
+

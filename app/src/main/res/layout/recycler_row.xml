@@ -3,15 +3,57 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/recyclerViewTextView"
+        android:id="@+id/recyclerViewBodyPart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test"
+        android:textColor="@color/white"
+        android:textSize="24sp"></TextView>
+
+    <TextView
+        android:id="@+id/recyclerViewWorkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text ="Test"
         android:textSize="24sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/recyclerViewSet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text ="Test"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        ></TextView>
+    <TextView
+        android:id="@+id/recyclerViewRep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text ="Test"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        ></TextView>
+    <TextView
+        android:id="@+id/recyclerViewWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text ="Test"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        ></TextView>
+    <TextView
+        android:id="@+id/recyclerViewPoints"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text ="Test"
+        android:textSize="24sp"
+        android:textColor="@color/white"
         ></TextView>
 
 </LinearLayout>
