@@ -1,70 +1,18 @@
 package com.example.fitnesstracker;
+import java.util.ArrayList;
 
-public class Workout {
-    int id;
-    String bodyPart;
-    String workout;
-    int sets;
-    int reps;
-    double weight;
-    String date;
+public class Workout extends Exercise{
+    private ArrayList<Exercise> exercises;
 
-    double points;
-
-    public Workout(int id, String bodyPart, String workout, int sets, int reps, double weight, String date) {
-        this.id = id;
-        this.bodyPart = bodyPart;
-        this.workout = workout;
-        this.sets = sets;
-        this.reps = reps;
-        this.weight = weight;
-        this.date = date;
+    public Workout(){
+        this.exercises = new ArrayList<>();
     }
 
-    @Override
-    public String toString() {
-        return "Workout{" +
-                "id=" + id +
-                ", bodyPart='" + bodyPart + '\'' +
-                ", workoutName='" + workout + '\'' +
-                ", sets=" + sets +
-                ", reps=" + reps +
-                ", weight=" + weight +
-                ", date='" + date + '\'' +
-                '}';
+    public void addExercise(Exercise exercise){
+        exercises.add(exercise);
     }
 
-    public double getPoints() {
-        points = reps * (1+(0.333 * reps)) * sets; // formula to calculate workout points
-        return points;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getBodyPart() {
-        return bodyPart;
-    }
-
-    public String getWorkout() {
-        return workout;
-    }
-
-    public int getSets() {
-        return sets;
-    }
-
-    public int getReps() {
-        return reps;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public String getDate() {
-        return date;
+    public ArrayList<Exercise> getExercises(){
+        return exercises;
     }
 }
-
