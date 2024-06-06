@@ -15,7 +15,7 @@
         android:textSize="24sp"></TextView>
 
     <TextView
-        android:id="@+id/recyclerViewWorkout"
+        android:id="@+id/recyclerViewExercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text ="Test"

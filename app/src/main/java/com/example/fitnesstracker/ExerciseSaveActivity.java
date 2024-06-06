@@ -13,22 +13,22 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class WorkoutSaveActivity extends AppCompatActivity {
-    SQLiteDatabase workout;
+public class ExerciseSaveActivity extends AppCompatActivity {
+    SQLiteDatabase exercise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workout_save);
+        setContentView(R.layout.activity_exercise_save);
 
         try {
 
-            workout = this.openOrCreateDatabase("Workout", MODE_PRIVATE, null);
-            workout.execSQL("CREATE TABLE IF NOT EXISTS workout (id INTEGER PRIMARY KEY AUTOINCREMENT, bodyPart VARCHAR, workout VARCHAR, sets INTEGER, reps INTEGER, weight REAL, date VARCHAR);");
+            exercise = this.openOrCreateDatabase("Exercise", MODE_PRIVATE, null);
+            exercise.execSQL("CREATE TABLE IF NOT EXISTS workout (id INTEGER PRIMARY KEY AUTOINCREMENT, bodyPart VARCHAR, exercise VARCHAR, sets INTEGER, reps INTEGER, weight REAL, date VARCHAR);");
 
 
             Spinner spinnerBodyParts = findViewById(R.id.spinnerBodyParts);
-            Spinner spinnerWorkouts = findViewById(R.id.spinnerWorkouts);
+            Spinner spinnerExercises = findViewById(R.id.spinnerExercises);
             Button saveButton = findViewById(R.id.buttonSave);
             EditText weight = findViewById(R.id.inputWeight);
             EditText set = findViewById(R.id.inputSet);
@@ -72,8 +72,8 @@ public class WorkoutSaveActivity extends AppCompatActivity {
                         }
 
 
-                        ArrayAdapter<String> childAdapter = new ArrayAdapter<>(WorkoutSaveActivity.this,android.R.layout.simple_spinner_dropdown_item,childItems);
-                        spinnerWorkouts.setAdapter(childAdapter);
+                        ArrayAdapter<String> childAdapter = new ArrayAdapter<>(ExerciseSaveActivity.this,android.R.layout.simple_spinner_dropdown_item,childItems);
+                        spinnerExercises.setAdapter(childAdapter);
 
 
                     }
@@ -93,11 +93,11 @@ public class WorkoutSaveActivity extends AppCompatActivity {
             saveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String sqlString = "INSERT INTO workout (bodyPart, workout, sets, reps, weight, date) VALUES (?, ?, ?, ?, ?, ?);";
-                    SQLiteStatement sqLiteStatement = workout.compileStatement(sqlString);
+                    String sqlString = "INSERT INTO exercise (bodyPart, exercise, sets, reps, weight, date) VALUES (?, ?, ?, ?, ?, ?);";
+                    SQLiteStatement sqLiteStatement = exercise.compileStatement(sqlString);
                     try {
                         String bodyPart = spinnerBodyParts.getSelectedItem().toString();
-                        String workoutName = spinnerWorkouts.getSelectedItem().toString();
+                        String exerciseName = spinnerExercises.getSelectedItem().toString();
                         int sets = Integer.parseInt(set.getText().toString());
                         int reps = Integer.parseInt(rep.getText().toString());
                         double weightValue = Double.parseDouble(weight.getText().toString());
@@ -105,7 +105,7 @@ public class WorkoutSaveActivity extends AppCompatActivity {
 
 
                         sqLiteStatement.bindString(1, bodyPart);
-                        sqLiteStatement.bindString(2, workoutName);
+                        sqLiteStatement.bindString(2, exerciseName);
                         sqLiteStatement.bindLong(3, sets);
                         sqLiteStatement.bindLong(4, reps);
                         sqLiteStatement.bindDouble(5, weightValue);

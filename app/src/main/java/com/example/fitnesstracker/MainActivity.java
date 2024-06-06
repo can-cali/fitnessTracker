@@ -22,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
     }
 
-    public void workoutSession(View view) {
-        Intent intent = new Intent(MainActivity.this, WorkoutSessionHistoryActivity.class);
+    public void exerciseSession(View view) {
+        Intent intent = new Intent(MainActivity.this, ExerciseSessionHistoryActivity.class);
         startActivity(intent);
     }
 
-    public void workoutSave(View view) {
-        Intent intent = new Intent(MainActivity.this, WorkoutSaveActivity.class);
+    public void exerciseSave(View view) {
+        Intent intent = new Intent(MainActivity.this, ExerciseSaveActivity.class);
         startActivity(intent);
     }
 

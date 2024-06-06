@@ -21,8 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
-        android:onClick="workoutSession"
-        android:text="Workout List"
+        android:onClick="exerciseSession"
+        android:text="Exercise List"
         app:layout_constraintBottom_toBottomOf="@+id/buttonSaveAct"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonSaveAct" />
@@ -33,8 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="42dp"
         android:layout_marginBottom="92dp"
-        android:onClick="workoutSave"
-        android:text="Workout Save"
+        android:onClick="exerciseSave"
+        android:text="Exercise Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

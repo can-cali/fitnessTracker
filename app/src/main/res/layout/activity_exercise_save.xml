@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInfo" />
 
     <Spinner
-        android:id="@+id/spinnerWorkouts"
+        android:id="@+id/spinnerExercises"
         android:layout_width="400dp"
         android:layout_height="66dp"
         android:layout_marginTop="16dp"
@@ -51,7 +51,7 @@
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerWorkouts" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerExercises" />
 
     <EditText
         android:id="@+id/inputRep"

@@ -9,57 +9,57 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.example.fitnesstracker.databinding.ActivityWorkoutSessionHistoryBinding;
+import com.example.fitnesstracker.databinding.ActivityExerciseSessionHistoryBinding;
 
 import java.util.ArrayList;
 
-public class WorkoutSessionHistoryActivity extends AppCompatActivity {
-    private ActivityWorkoutSessionHistoryBinding binding;
-    ArrayList<Workout> workoutArrayList;
-    WorkoutAdapter workoutAdapter;
+public class ExerciseSessionHistoryActivity extends AppCompatActivity {
+    private ActivityExerciseSessionHistoryBinding binding;
+    ArrayList<Exercise> exerciseArrayList;
+    ExerciseAdapter exerciseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityWorkoutSessionHistoryBinding.inflate(getLayoutInflater());
+        binding = ActivityExerciseSessionHistoryBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        workoutArrayList = new ArrayList<>();
+        exerciseArrayList = new ArrayList<>();
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        workoutAdapter = new WorkoutAdapter(workoutArrayList);
-        binding.recyclerView.setAdapter(workoutAdapter);
+        exerciseAdapter = new ExerciseAdapter(exerciseArrayList);
+        binding.recyclerView.setAdapter(exerciseAdapter);
 
         getData();
     }
 
     private void getData(){
         try{
-            SQLiteDatabase workout = this.openOrCreateDatabase("Workout", MODE_PRIVATE, null);
-            Cursor cursor = workout.rawQuery("SELECT * FROM workout", null);
+            SQLiteDatabase exercise = this.openOrCreateDatabase("Exercise", MODE_PRIVATE, null);
+            Cursor cursor = exercise.rawQuery("SELECT * FROM workout", null);
             int idIndex = cursor.getColumnIndex("id");
             int bodyPartIndex = cursor.getColumnIndex("bodyPart");
-            int workoutIndex = cursor.getColumnIndex("workout");
+            int exerciseIndex = cursor.getColumnIndex("exercise");
             int setsIndex = cursor.getColumnIndex("sets");
             int repsIndex = cursor.getColumnIndex("reps");
             int weightIndex = cursor.getColumnIndex("weight");
             int dateIndex = cursor.getColumnIndex("date");
-            Log.d("MyApp", "id: " + idIndex + " bodyPart: " + bodyPartIndex + " workout: " + workoutIndex + " sets: " + setsIndex + " reps: " + repsIndex + " weight: " + weightIndex + " date: " + dateIndex);
+            Log.d("MyApp", "id: " + idIndex + " bodyPart: " + bodyPartIndex + " exercise: " + exerciseIndex + " sets: " + setsIndex + " reps: " + repsIndex + " weight: " + weightIndex + " date: " + dateIndex);
 
             while(cursor.moveToNext()){
                 int id = cursor.getInt(idIndex);
                 String bodyPart = cursor.getString(bodyPartIndex);
-                String workoutName = cursor.getString(workoutIndex);
+                String exerciseName = cursor.getString(exerciseIndex);
                 int sets = cursor.getInt(setsIndex);
                 int reps = cursor.getInt(repsIndex);
                 double weight = cursor.getDouble(weightIndex);
                 String date = cursor.getString(dateIndex);
-                Workout savedWorkout = new Workout(id, bodyPart, workoutName, sets, reps, weight, date);
-                Log.d("MyApp", "My workout is: " + savedWorkout); // to check if the data is being fetched correctly
+                Exercise savedExercise = new Exercise(bodyPart, exerciseName, sets, reps, weight, date);
+                Log.d("MyApp", "My workout is: " + savedExercise); // to check if the data is being fetched correctly
 
-                workoutArrayList.add(savedWorkout);
+                exerciseArrayList.add(savedExercise);
             }
-            workoutAdapter.notifyDataSetChanged();
+            exerciseAdapter.notifyDataSetChanged();
             cursor.close();
 
 
